@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContatoService } from '../services/contato.service';
 import { Contato } from '../models/Contato.model';
 
@@ -9,11 +9,11 @@ import { Contato } from '../models/Contato.model';
 })
 export class ContatoListComponent implements OnInit {
 
-  contatos: Contato[];
-  constructor(private contatoService: ContatoService) { }
+  @Input() contatos: Contato[];
+  constructor() { }
 
   ngOnInit(): void {
-    this.contatos = this.contatoService.getAll();
+
   }
 
 }
