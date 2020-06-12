@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ContatoService } from '../services/contato.service';
 import { Contato } from '../models/Contato.model';
 
@@ -10,10 +10,20 @@ import { Contato } from '../models/Contato.model';
 export class ContatoListComponent implements OnInit {
 
   @Input() contatos: Contato[];
+  @Output() editContato = new EventEmitter();
+  @Output() deleteContato = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  edit(contato: Contato){
+    this.editContato.emit(contato);
+  }
+
+  delete(contato: Contato){
+    this.deleteContato.emit(contato);
   }
 
 }
