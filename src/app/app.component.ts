@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ApiService } from './services/api.service';
+import { Car } from './models/car.model';
+import { People } from './models/people.model';
+import { NgForm } from '@angular/forms';
+
+interface CarsPeople extends People {
+  cars: Car[];
+}
 
 @Component({
   selector: 'app-root',
@@ -7,4 +15,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'nicks-angular';
+
+  constructor(private _apiService: ApiService){}
+
+  carsPeople: CarsPeople;
+  idPeople: string;
+
+  ngOnInit(){
+  }
+
+  onSubmit(form: NgForm){
+    this._apiService.getCarsByPeopleId(this.idPeople).subscribe(data => this.carsPeople = data)
+  }
 }
