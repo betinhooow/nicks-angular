@@ -29,9 +29,23 @@
 
     <div class="col-md-6">
       <mat-tab-group>
-        <mat-tab label="First"> Content 1 </mat-tab>
-        <mat-tab label="Second"> Content 2 </mat-tab>
-        <mat-tab label="Third"> Content 3 </mat-tab>
+        <mat-tab label="{{ carsPeople.name }}">
+          <table class="table">
+            <p>Nome: {{ carsPeople.name }}</p>
+            <p>Idade: {{ carsPeople.age }}</p>
+            <p>Cidade: {{ carsPeople.city }}</p>
+            <p>Rua: {{ carsPeople.neighborhood }}</p>
+            <p>Nm casa: {{ carsPeople.nmHouse }}</p>
+          </table>
+        </mat-tab>
+        <mat-tab *ngFor="let car of carsPeople.car" label="{{ car.carPlaque }}">
+          <p>Placa: {{ car.carPlaque }}</p>
+          <p>Marca: {{ car.brand }}</p>
+          <p>Modelo: {{ car.model }}</p>
+          <p>Ano Marca: {{ car.yearBrand }}</p>
+          <p>Ano Modelo: {{ car.yearModel }}</p>
+          <p class="danger"> {{ car.carCaster }}</p>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>
