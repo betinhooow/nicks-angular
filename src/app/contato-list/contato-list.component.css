@@ -1,0 +1,83 @@
+.tab {
+  display: flex;
+  flex-flow: column;
+  margin: 80px 0;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.tablist {
+  border-bottom: 1px solid #ddd;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-top: 0;
+}
+
+.tabitem {
+  float: left;
+  margin-bottom: -1px;
+  position: relative;
+  display: block;
+  text-align: -webkit-match-parent;
+}
+
+span {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  color: #337ab7;
+  cursor: pointer;
+  background-color: #dcdcdc;
+}
+
+.active {
+  color: #555 !important;
+  cursor: default;
+  background-color: #fff !important;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.label {
+  padding: 16px;
+  width: 100%;
+  color: #337ab7;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.group {
+  display: flex;
+}
+
+.carverify {
+
+}
+
+.error {
+  font-size: 18px;
+  color: red;
+}
+.button {
+  background: #337ab7;
+  height: 30px;
+  border-radius: 10px;
+  border: 0;
+  width: 100px;
+  padding: 0 16px;
+  color: #FFF;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.button:hover {
+  background: #337ab7;
+}

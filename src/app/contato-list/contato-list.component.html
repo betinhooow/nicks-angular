@@ -1,20 +1,59 @@
-<table class="table table-striped">
-  <tr class="table-primary">
-    <th>Nome</th>
-    <th>Telefone</th>
-    <th>#</th>
-  </tr>
+<img *ngIf="!peopleCars" src="assets/loading.svg">
+<a [routerLink]="['/']"><button class="button">Voltar</button></a>
+<div style="width: 500px">
+<h1>Bem vindx,  {{peopleCars.name}}</h1>
+<div class="carverify" *ngIf="peopleCars">
+  <div>
+      <div class="tab">
+        <ul class="tablist">
+          <li class="tabitem" [ngClass]="{'active' : activeTab == 0}">
+            <a (click)="onClick(0)">
+            <span>{{ peopleCars.name }}</span>
+            </a>
+          </li>
+          <li
+            class="tabitem"
+            *ngFor="let car of peopleCars.car; let i = index"
+            [ngClass]="{'active': activeTab == i+1}"
+          >
+            <a (click)="onClick(i+1)">
+              <span>{{ car.carPlaque }}</span>
+            </a>
+          </li>
+        </ul>
 
-  <tr *ngFor="let contato of contatos">
-    <td>{{contato.nome}}</td>
-    <td>{{contato.telefone}}</td>
-    <td>
-      <button class="btn btn-primary" (click)="edit(contato)">
-        <i class="fas fa-edit"></i>
-      </button>
-      <button class="btn btn-danger" (click)="delete(contato)">
-        <i class="far fa-trash-alt"></i>
-      </button>
-    </td>
-  </tr>
-</table>
+
+        <div class="tabpanel" *ngIf="activeTab == 0">
+          <p class="label">Código: {{ peopleCars.id }}</p>
+          <div class="group">
+            <p class="label">Nome: {{ peopleCars.name }}</p>
+            <p class="label">Idade: {{ peopleCars.age }}</p>
+          </div>
+          <div class="group">
+            <p class="label">Endereço: {{ peopleCars.address }}</p>
+            <p class="label">Número casa: {{ peopleCars.nmHouse }}</p>
+          </div>
+        </div>
+        <div
+          class="tabpanel"
+          *ngFor="let car of peopleCars.car; let i = index"
+          [attr.data-index]="i"
+        >
+        <div *ngIf="activeTab == i+1">
+          <p class="label">Placa: {{ car.carPlaque }}</p>
+          <div class="group">
+            <p class="label">Marca: {{ car.brand }}</p>
+            <p class="label">Modelo: {{ car.model }}</p>
+          </div>
+          <div class="group">
+            <p class="label">Ano Marca: {{ car.yearBrand }}</p>
+            <p class="label">Ano Modelo: {{ car.yearModel }}</p>
+          </div>
+          <p class="error"> {{ car.carCaster }}</p>
+        </div>
+        </div>
+
+      </div>
+  </div>
+</div>
+</div>

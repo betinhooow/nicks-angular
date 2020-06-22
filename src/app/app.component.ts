@@ -25,6 +25,6 @@ export class AppComponent {
   }
 
   onSubmit(form: NgForm){
-    this._apiService.getCarsByPeopleId(this.idPeople).subscribe(data => this.carsPeople = data)
+
   }
 }

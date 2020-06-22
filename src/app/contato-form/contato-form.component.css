@@ -1,0 +1,50 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+form {
+  margin: 50px 0;
+  max-width: 400px;
+}
+
+.input-div {
+  background: #C2DFFF;
+  border-radius: 10px;
+  border: 2px solid #C2DFFF;
+  padding: 16px;
+  width: 100%;
+  color: #396FAC;
+  display: flex;
+  align-items: center;
+
+  border-color: purple;
+
+}
+
+input {
+  background-color: transparent;
+  flex: 1;
+  border: 0;
+  color: #396FAC;
+}
+
+.btn-submit {
+  background: #396FAC;
+  height: 56px;
+  border-radius: 10px;
+  border: 0;
+  padding: 0 16px;
+  color: #FFF;
+  width: 100%;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.btn-submit:hover {
+  background: darkblue;
+}

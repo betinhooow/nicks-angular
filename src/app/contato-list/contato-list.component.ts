@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ContatoService } from '../services/contato.service';
-import { Contato } from '../models/Contato.model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import { PeopleCars } from '../interfaces/IPeopleCar';
 
 @Component({
   selector: 'app-contato-list',
@@ -9,21 +10,27 @@ import { Contato } from '../models/Contato.model';
 })
 export class ContatoListComponent implements OnInit {
 
-  @Input() contatos: Contato[];
-  @Output() editContato = new EventEmitter();
-  @Output() deleteContato = new EventEmitter();
-  constructor() { }
+  public peopleCars: PeopleCars;
+  public activeTab: number
+
+  constructor(
+    private route: ActivatedRoute,
+    private _apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
-
+    let id = this.route.snapshot.paramMap.get('id');
+    this.getPeopleCar(id);
+    this.activeTab = 0;
   }
 
-  edit(contato: Contato){
-    this.editContato.emit(contato);
+  async getPeopleCar(id: string){
+    this.peopleCars = await this._apiService.getCarsByPeopleId(id).then(data => this.peopleCars = data);
+    console.log(this.peopleCars)
   }
 
-  delete(contato: Contato){
-    this.deleteContato.emit(contato);
+  onClick(idx) {
+    this.activeTab = idx;
   }
 
 }
